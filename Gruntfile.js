@@ -1,3 +1,5 @@
+const config = require('./config');
+
 module.exports = function (grunt) {
 
     // Project configuration.
@@ -41,7 +43,7 @@ module.exports = function (grunt) {
         sass: {
             dev: {
                 options: {
-                    sourcemap: 'auto', // 可选 auto, file, inline, none
+                    sourcemap: config.sourceMapEnabled === false ? 'none' : 'auto', // 可选 auto, file, inline, none ，设置为 none 则不生成 map
                     style: 'expanded', // 可选 nested, compact, compressed, expanded
                 },
                 files: [{
@@ -68,7 +70,7 @@ module.exports = function (grunt) {
         },
         babel: {
             options: {
-                sourceMap: true,
+                sourceMap: config.sourceMapEnabled, //不想生成map，可设为 false
                 presets: ['@babel/preset-env']
             },
             dist: {
@@ -88,7 +90,7 @@ module.exports = function (grunt) {
                 dest: './',             //压缩文件存放到dist目录下的同名目录
                 ext: '.min.js',           //压缩文件的后缀名
                 options: {
-                    sourceMap: true
+                    sourceMap: config.sourceMapEnabled //不想生成map，可设为 false
                 }
             }
         },

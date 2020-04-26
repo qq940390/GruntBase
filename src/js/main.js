@@ -1,6 +1,6 @@
 class test {
     constructor() {
-        alert('s')
+        alert('你看见我，就表示OK啦！')
     }
 }
 

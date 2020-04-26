@@ -1,71 +1,23 @@
-# JSTemplate
+# Grunt Base
 
-一个简单的JS模板引擎
+一个基于 Windows NodeJs 环境，利用 Grunt 打包构建常规CSS、JS项目的基本应用。
 
-- 普通模板支持
+- CSS支持SASS，支持 autoprefixer 自动添加前缀
+- JS支持Babel自动转换
+- 支持JS压缩，CSS压缩
+- 支持生成 SourceMap
+- Build 自动清理dist文件夹
+- 支持本地调试
 
-```html
-<script type="text/html" id="tpl">
-    <a href="{{url}}" title="{{title}}"><img src="{{image}}" alt="{{title}}" width="{{width}}" height="{{height}}" /></a>
-</script>
-```
-- 普通模板需要的数据
+其中用到了SASS，所以需要安装Ruby和SASS，安装方法参考sass官网：
+[https://www.sass.hk/install/](https://www.sass.hk/install/)
 
-```json
-{
-    "width":"270",
-    "height":"140",
-    "title":"\u7741\u5927\u53cc\u773c\u770b\u6570\u5b57\u62a5",
-    "url":"http:\/\/share.gzdsw.com\/?r=share\/index\/click&q=RVJHRUY7RlJGTE47R1JGTDtIUnZdZ0V4WYSLYUdnj25%2BSoN6gmePeY5Kf3dHRTpIWQljOGUzNDVkOWRhNzc5ZGIzNTRmOTcyODJmNjJlOTc5Nw%7C%7C",
-    "image":"http:\/\/share.gzdsw.com\/upload\/201111\/046.jpg",
-    "width":"270",
-    "height":"140"
-}
-```
+使用方法：
 
-- 循环模板支持
+- 安装： npm install
+- 启动本地调试： npm run server ，可以运行 _run_server.bat 快速启动调试
+- Build： npm run build ，可以运行 _run_build.bat 快速 Build
 
-```html
-<script type="text/html" id="tpl2">
-    {{each datas as value index}}
-    <a href="{{value.url}}" title="{{value.title}}">
-        <img src="{{value.image}}" alt="{{value.title}}" width="{{width}}" height="{{height}}" />
-    </a>
-    {{/each}}
-</script>
-```
+配置文件是 Gruntfile.js ，可根据自己需要进行更改
 
-- 循环模板需要的数据
-
-```json
-{
-    "width":"270",
-    "height":"140",
-    "datas":[
-        {"title":"\u7741\u5927\u53cc\u773c\u770b\u6570\u5b57\u62a5",
-        "url":"http:\/\/share.gzdsw.com\/?r=share\/index\/click&q=RVJHRUY7RlJGTE47R1JGTDtIUnZdZ0V4WYSLYUdnj25%2BSoN6gmePeY5Kf3dHRTpIWQljOGUzNDVkOWRhNzc5ZGIzNTRmOTcyODJmNjJlOTc5Nw%7C%7C",
-        "image":"http:\/\/share.gzdsw.com\/upload\/201111\/046.jpg",
-        "width":"270",
-        "height":"140"
-        },
-        {"title":"\u7741\u5927\u53cc\u773c\u770b\u6570\u5b57\u62a5",
-        "url":"http:\/\/share.gzdsw.com\/?r=share\/index\/click&q=RVJHRUY7RlJGTE47R1JGTDtIUnZdZ0V4WYSLYUdnj25%2BSoN6gmePeY5Kf3dHRTpIWQljOGUzNDVkOWRhNzc5ZGIzNTRmOTcyODJmNjJlOTc5Nw%7C%7C",
-        "image":"http:\/\/share.gzdsw.com\/upload\/201111\/046.jpg",
-        "width":"270",
-        "height":"140"
-        },
-        {"title":"\u7741\u5927\u53cc\u773c\u770b\u6570\u5b57\u62a5",
-        "url":"http:\/\/share.gzdsw.com\/?r=share\/index\/click&q=RVJHRUY7RlJGTE47R1JGTDtIUnZdZ0V4WYSLYUdnj25%2BSoN6gmePeY5Kf3dHRTpIWQljOGUzNDVkOWRhNzc5ZGIzNTRmOTcyODJmNjJlOTc5Nw%7C%7C",
-        "image":"http:\/\/share.gzdsw.com\/upload\/201111\/046.jpg",
-        "width":"270",
-        "height":"140"
-        }
-    ]
-}
-```
-
-- 使用方法
-
-```javascript
-document.querySelector('#list').innerHTML = (new JinhaiJSTemplate).render('tpl', jsonData);
-```
+本地调试和Build不可同时运行，当然，你也可以同时运行，然后...
