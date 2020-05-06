@@ -41,6 +41,14 @@ module.exports = function (grunt) {
                     dest: 'dist/',
                     src: 'index.html'
                 }]
+            },
+            static: {
+                files: [{
+                    expand: true,
+                    flatten: false,
+                    dest: 'dist/',
+                    src: 'static/**/*.js'
+                }]
             }
         },
         sass: {

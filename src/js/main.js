@@ -10,6 +10,7 @@ class test {
         var regStr_ff = /firefox\/[\d.]+/gi
         var regStr_chrome = /chrome\/[\d.]+/gi;
         var regStr_saf = /safari\/[\d.]+/gi;
+
         //IE
         if (agent.indexOf("msie") > 0) {
             return agent.match(regStr_ie);
