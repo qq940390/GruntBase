@@ -2,6 +2,9 @@ const config = require('./config');
 
 module.exports = function (grunt) {
 
+    // 强制使用Unix换行符
+    grunt.util.linefeed = '\n';
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -96,11 +99,14 @@ module.exports = function (grunt) {
         },
         autoprefixer: {
             options: {
-                browsers: ['last 5 versions', 'ie 8']
+                safe: true,
+                browsers: ['last 2 versions', 'ie 7', 'ie 8', 'ie 9']
             },
-            css: {
-                src: 'src/scss/**/*.css',
-                dest: 'dist/css/**/*.css'
+            mutiple_files: {
+                expand: true,
+                flatten: true,//是否取代原先文件名
+                src: 'dist/css/*.css',
+                dest: './dist/css/'
             }
         },
         browserSync: {
@@ -149,6 +155,7 @@ module.exports = function (grunt) {
     grunt.registerTask('browser', [
         'copy',
         'sass',
+        'autoprefixer',
         'babel',
         'browserSync',
         'watch',
@@ -157,6 +164,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'clean',
         'sass',
+        'autoprefixer',
         'cssmin',
         'babel',
         'uglify'

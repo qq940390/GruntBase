@@ -1,4 +1,4 @@
-$color: #f90;
+@import 'variables.scss';
 
 ul {
     list-style: none;
@@ -9,4 +9,6 @@ li {
     display: inline-flex;
     padding: 1rem;
     background: $color;
+    box-shadow: 2px 2px $bg-color;
+    transform:rotate(20deg);
 }
