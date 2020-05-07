@@ -1,7 +1,7 @@
 {
-    "name": "jinhaijstemplate",
+    "name": "GruntBase",
     "version": "1.0.0",
-    "description": "JinhaiJSTemplate",
+    "description": "GruntBase",
     "scripts": {
         "clean-modules": "rimraf node_modules",
         "build": "grunt",
@@ -12,7 +12,7 @@
         "url": "git+https://github.com/qq940390/JSTemplate.git"
     },
     "keywords": [
-        "jstemplate"
+        "GruntBase"
     ],
     "author": "wujinhai",
     "license": "MIT",
